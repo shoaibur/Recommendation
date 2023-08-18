@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from models.simple_content_based_recommendation import SimpleContentBasedRec
+from models.content_based_recommendation_base import SimpleContentBasedRec
 
 class TestSimpleContentBasedRec(unittest.TestCase):
 
