@@ -1,5 +1,5 @@
 # Recommendation
-Recommendation is a collection of state-of-the-art recommendation system models, ranging from traditional content-based methods to advanced deep learning techniques.
+**Recommendation** is a collection of state-of-the-art recommendation system models, ranging from traditional content-based methods to advanced deep learning techniques.
 
 ## Table of Contents
 - [Models](#models)
@@ -7,6 +7,7 @@ Recommendation is a collection of state-of-the-art recommendation system models,
 - [Usage](#usage)
 - [Testing](#testing)
 - [Contributing](#contributing)
+- [License](#license)
 
 # Models
 1. **Matrix Factorization Based Recommendation**
@@ -70,3 +71,6 @@ Unit tests are provided for each recommendation model. To run the tests:
 
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+# License
+This project is licensed under the terms specified in the license available at the following link: [LICENSE](https://github.com/shoaibur/Recommendation/blob/main/LICENSE). Please ensure to review the license terms before using, modifying, or distributing the code or its derivatives.
