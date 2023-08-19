@@ -14,6 +14,7 @@ Recommendation is a collection of state-of-the-art recommendation system models,
   * Content Based Recommendation (BERT): Enhancing content-based recommendations using BERT. Defined in ```content_based_recommendation_bert.py```.
 * **Matrix Factorization**: Classical collaborative filtering approach for recommendation. Defined in ```matrix_factorization_based_recommendation.py```.
 * **Deep Learning Based Recommendation**: Using dense neural networks to model complex patterns in user-item interactions. Defined in ```deep_learning_based_recommendation.py```.
+* **Hybrid Model**: Designed to incorporate the strengths of both deep learning-based recommendation models and matrix factorization techniques to provide better and more accurate item recommendations to users. It balances between these two techniques using a learnable parameter, alpha. Defined in ```hybrid_recommendation.py```
 * **Examples & Tests**: Comprehensive usage examples and unit tests for each recommendation model.
 
 # Installation
