@@ -18,7 +18,7 @@ Recommendation is a collection of state-of-the-art recommendation system models,
 
 # Installation
 1. Clone the repository:
-  `git clone https://github.com/yourusername/Recommendation.git`
+  `git clone https://github.com/shoaibur/Recommendation.git`
 2. Navigate to the repository: `cd Recommendation`
 3. Install the required packages: `pip install -r requirements.txt`
 
