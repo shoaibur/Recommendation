@@ -10,14 +10,17 @@ class HybridRecommendation:
 
     def __init__(self, users_data, items_data, interaction_data, num_epochs=1000, lr=0.01, hidden_size=16, seed=42):
 
-        # Initialize deep learning recommendation system
+        # Determine the device
+        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+        # Initialize deep learning recommendation system and move to device
         self.deep_learning_rec = DeepLearningRec(users_data, items_data, interaction_data, num_epochs, lr, hidden_size, seed)
 
-        # Initialize matrix factorization recommendation system
+        # Initialize matrix factorization recommendation system and move to device
         self.matrix_factorization_rec = MatrixFactorization(interaction_data, seed)
 
-        # Make alpha a learnable parameter
-        self.alpha = nn.Parameter(torch.tensor([0.5]))
+        # Make alpha a learnable parameter and move to device
+        self.alpha = nn.Parameter(torch.tensor([0.5])).to(self.device)
 
         # Create a combined optimizer
         self.optimizer = optim.Adam([self.alpha,
@@ -27,9 +30,10 @@ class HybridRecommendation:
                                      self.matrix_factorization_rec.item_factors], lr=lr)
 
         self.num_epochs = num_epochs
-        self.known_interactions_mask = torch.tensor(interaction_data, dtype=torch.float32) != -1
-        self.interaction_data = torch.tensor(interaction_data, dtype=torch.float32)
-        self.loss_function = nn.MSELoss(reduction='none')
+        self.known_interactions_mask = ((interaction_data.clone().detach() if torch.is_tensor(interaction_data) else torch.tensor(interaction_data, dtype=torch.float32)) != -1).to(self.device)
+        self.interaction_data = (interaction_data.clone().detach() if torch.is_tensor(interaction_data) else torch.tensor(interaction_data, dtype=torch.float32)).to(self.device)
+
+        self.loss_function = nn.MSELoss(reduction='none').to(self.device)
 
     def train(self):
         for epoch in range(self.num_epochs):
@@ -76,4 +80,5 @@ class HybridRecommendation:
 
       # Get the top k scores indices
       _, top_k_indices = torch.topk(scores, k, dim=1)
+      
       return top_k_indices
