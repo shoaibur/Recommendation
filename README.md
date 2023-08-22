@@ -3,6 +3,7 @@
 
 ## Table of Contents
 - [Models](#models)
+- [Data](#data)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Testing](#testing)
@@ -34,15 +35,22 @@
 
   * Content Based Recommendation (Base):
 
-      **File**: ```content_based_recommendation_base.py```
+      * **File**: ```content_based_recommendation_base.py```
 
-      **Description**: This is the fundamental approach to content-based recommendations. The model leverages item features and known user preferences to predict which items a user may find relevant. It typically employs techniques like term frequency-inverse document frequency (TF-IDF) and cosine similarity to measure the relevance between user preferences and item features.
+      * **Description**: This is the fundamental approach to content-based recommendations. The model leverages item features and known user preferences to predict which items a user may find relevant. It typically employs techniques like term frequency-inverse document frequency (TF-IDF) and cosine similarity to measure the relevance between user preferences and item features.
   
   * Content Based Recommendation (BERT)
       
       * **File**: ```content_based_recommendation_bert.py```
       
       * **Description**: This model enhances traditional content-based recommendations using BERT (Bidirectional Encoder Representations from Transformers). BERT allows for more sophisticated feature extraction from item content, capturing context and semantics in a way that traditional methods might miss. This model can be particularly useful for recommending text-based items like articles or books.
+
+# Data
+For effective recommendation, the system requires rich datasets to understand and model the underlying patterns in user-item interactions. This repository leverages three example datasets. The generation of these synthetic datasets are outlined in **generate_data.ipynb** notebook.
+
+* **products.json**: This is a json file that includes the details about different products or items. The key of the json object represents product_id and each item has three fields: name, description, and category of the items.
+* **users.csv**: This file provides details about each user. The attributes include: id, gender, location, age, occupation, and preferred_category.
+* **interactions.csv**: This dataset captures the interactions between users and products. It provides a snapshot of which user interacted with which product and can also include details like ratings, timestamps, etc., depending on the specifics of the dataset. Key attributes are: user_id, product_id, and rating.
 
 **Examples & Tests**
 
