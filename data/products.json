@@ -1,0 +1,52 @@
+{
+    "1": {
+        "name": "Apple iPhone 12",
+        "description": "Smartphone with A14 Bionic chip",
+        "category": "Electronics"
+    },
+    "2": {
+        "name": "Nike Air Max",
+        "description": "Athletic shoes with cushion support",
+        "category": "Fashion"
+    },
+    "3": {
+        "name": "LEGO Star Wars",
+        "description": "Building toy set from Star Wars series",
+        "category": "Toys"
+    },
+    "4": {
+        "name": "Logitech Mouse",
+        "description": "Wireless optical mouse",
+        "category": "Electronics"
+    },
+    "5": {
+        "name": "Levi's Jeans",
+        "description": "Denim straight fit jeans",
+        "category": "Fashion"
+    },
+    "6": {
+        "name": "Harry Potter",
+        "description": "Fantasy book series by J.K. Rowling",
+        "category": "Books"
+    },
+    "7": {
+        "name": "Fender Strat",
+        "description": "Electric guitar with classic tones",
+        "category": "Music"
+    },
+    "8": {
+        "name": "Canon DSLR",
+        "description": "High-resolution digital camera",
+        "category": "Electronics"
+    },
+    "9": {
+        "name": "Green Pan Set",
+        "description": "Non-stick, eco-friendly pan set",
+        "category": "Home"
+    },
+    "10": {
+        "name": "Sony Headphones",
+        "description": "Noise-cancelling over the ear headphones",
+        "category": "Electronics"
+    }
+}
