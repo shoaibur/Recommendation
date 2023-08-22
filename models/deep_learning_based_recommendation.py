@@ -10,16 +10,19 @@ class DeepLearningRec:
         torch.manual_seed(seed)
         if torch.cuda.is_available():
             torch.cuda.manual_seed_all(seed)
+            self.device = torch.device('cuda')
+        else:
+            self.device = torch.device('cpu')
 
-        self.users_data = torch.tensor(users_data)
-        self.items_data = torch.tensor(items_data)
-        self.interaction_matrix = torch.tensor(interaction_data, dtype=torch.float32)
-        self.known_interactions_mask = (self.interaction_matrix != -1)
+        self.users_data = (users_data.clone().detach() if torch.is_tensor(users_data) else torch.tensor(users_data)).to(self.device)
+        self.items_data = (items_data.clone().detach() if torch.is_tensor(items_data) else torch.tensor(items_data)).to(self.device)
+        self.interaction_matrix = (interaction_data.clone().detach() if torch.is_tensor(interaction_data) else torch.tensor(interaction_data, dtype=torch.float32)).to(self.device)
+        self.known_interactions_mask = (self.interaction_matrix != -1).to(self.device)
 
         # Define the dense layers
         input_size = self.users_data.shape[1] + self.items_data.shape[1]
-        self.dense1 = nn.Linear(input_size, hidden_size)
-        self.dense2 = nn.Linear(hidden_size, 1)
+        self.dense1 = nn.Linear(input_size, hidden_size).to(self.device)
+        self.dense2 = nn.Linear(hidden_size, 1).to(self.device)
 
         # Loss and optimizer
         self.loss_function = nn.MSELoss(reduction='none')
@@ -33,7 +36,7 @@ class DeepLearningRec:
 
             for user_features in self.users_data:
                 for item_features in self.items_data:
-                    combined = torch.cat((user_features, item_features))
+                    combined = torch.cat((user_features, item_features)).to(self.device)
                     dense1_output = F.relu(self.dense1(combined))
                     dense2_output = self.dense2(dense1_output)
                     all_predictions.append(dense2_output)
