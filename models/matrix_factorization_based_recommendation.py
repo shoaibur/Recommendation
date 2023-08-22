@@ -16,7 +16,8 @@ class MatrixFactorization:
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
         # Convert interaction data to tensor
-        self.interaction_matrix = torch.tensor(interaction_data, dtype=torch.float32).to(self.device)
+        self.interaction_matrix = interaction_data.clone().detach().to(self.device) if torch.is_tensor(interaction_data) else torch.tensor(interaction_data, dtype=torch.float32).to(self.device)
+
 
         # Mask for known interactions
         self.known_interactions_mask = (self.interaction_matrix != -1)
